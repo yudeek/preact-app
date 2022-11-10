@@ -1,32 +1,26 @@
 import { useState } from 'preact/hooks'
 import preactLogo from './assets/preact.svg'
 import './app.css'
+import { Hello } from './components/Hello.jsx';
+import { Comp1 } from './components/Comp1.jsx';
+import { Comp2 } from './components/Comp2.jsx';
 
 export function App() {
-  const [count, setCount] = useState(0)
+  const clickEvent = e => console.log(e);
+
+  const el = <p onClick={clickEvent}>test</p>;
+  const el2 = <p onClick={e => console.log(e)}>test2</p>;
+
+  const onChangeEvent = d => console.log(d);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
-        </a>
-      </div>
-      <h1>Vite + Preact</h1>
-      <div class="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/app.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
-      </p>
+      <input onChange={onChangeEvent} type="text" placeholder="name" />
+      { el }
+      { el2 }
+      <Hello name={'Ivan'} />
+      <Comp1>we are here!</Comp1>
+      <Comp2></Comp2>
     </>
   )
 }
